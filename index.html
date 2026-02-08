@@ -3,180 +3,245 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organiza Soluções | Macaé e São Pedro</title>
-    
+    <title>Organiza Empréstimos | Consultoria Financeira Premium</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --azul-escuro: #0a192f;
-            --laranja: #f05a22;
-            --branco: #ffffff;
-            --cinza-bg: #f8f9fa;
+            --azul-deep: #0a192f;
+            --laranja-organiza: #f05a22;
+            --glass-bg: rgba(255, 255, 255, 0.08);
         }
 
-        body { font-family: 'Inter', sans-serif; background-color: var(--cinza-bg); color: var(--azul-escuro); margin: 0; }
-
-        /* --- NAVBAR --- */
-        .navbar-custom { background: var(--branco); border-bottom: 3px solid var(--laranja); padding: 15px 0; }
-        .brand-text { font-weight: 900; font-size: 1.5rem; color: var(--azul-escuro); text-transform: uppercase; }
-        .brand-text span { color: var(--laranja); }
-
-        /* --- ESTEIRA DE LOGOS (Fundo Branco para as logos aparecerem) --- */
-        .slider-bancos { background: var(--branco); padding: 25px 0; overflow: hidden; border-bottom: 1px solid #ddd; }
-        .slider-track { display: flex; width: calc(200px * 12); animation: scroll 30s linear infinite; align-items: center; }
-        .slider-item { width: 200px; padding: 0 30px; }
-        .slider-item img { max-width: 130px; height: auto; object-fit: contain; }
-
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-200px * 6)); }
+        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; overflow-x: hidden; }
+        
+        /* --- ESTEIRA DE LOGOS (Estilo Premium) --- */
+        .top-bank-slider {
+            background: var(--azul-deep); 
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            padding: 18px 0;
+            white-space: nowrap;
         }
-
-        /* --- HERO SECTION (O impacto que você quer) --- */
-        .hero {
-            background: linear-gradient(135deg, var(--azul-escuro) 0%, #112240 100%);
-            padding: 100px 0;
-            color: var(--branco);
-            text-align: center;
+        .top-bank-track {
+            display: inline-flex;
+            align-items: center;
+            animation: scroll-top 35s linear infinite;
         }
-        .hero h1 { font-weight: 900; font-size: 2.8rem; margin-bottom: 20px; line-height: 1.1; }
-        .hero h1 span { color: var(--laranja); }
-        .hero p { font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: 0 auto 40px; }
-
-        .btn-cta {
-            background: var(--laranja);
-            color: var(--branco);
-            padding: 18px 45px;
-            border-radius: 50px;
+        .top-bank-item {
+            display: flex;
+            align-items: center;
+            margin: 0 45px;
+        }
+        .top-bank-item img {
+            height: 28px; 
+            width: auto;
+            filter: brightness(0) invert(1); /* Logos brancas para fundo escuro */
+            opacity: 0.85;
+        }
+        .top-bank-item span {
+            color: white;
+            font-size: 12px;
             font-weight: 700;
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-            text-transform: uppercase;
+            margin-left: 10px;
             letter-spacing: 1px;
-            box-shadow: 0 10px 20px rgba(240, 90, 34, 0.3);
+            opacity: 0.9;
         }
-        .btn-cta:hover { background: #d44917; color: var(--branco); transform: scale(1.05); }
+        @keyframes scroll-top {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
 
-        /* --- CARDS QUE GIRAM (Design Original) --- */
-        .card-box { perspective: 1000px; height: 300px; margin-bottom: 30px; }
-        .card-flip {
-            position: relative; width: 100%; height: 100%;
-            transition: transform 0.8s; transform-style: preserve-3d;
+        /* --- HERO SECTION --- */
+        .hero-section {
+            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
+            padding: 100px 0;
+            position: relative;
+            color: white;
+            min-height: 550px;
+            display: flex;
+            align-items: center;
         }
-        .card-box:hover .card-flip { transform: rotateY(180deg); }
+
+        .text-gradient {
+            background: linear-gradient(90deg, #f05a22, #ff8c5a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        /* --- CARDS FLIP --- */
+        .card-container { perspective: 1000px; height: 280px; cursor: pointer; }
+        .card-inner {
+            position: relative; width: 100%; height: 100%;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+        .card-container:hover .card-inner { transform: rotateY(180deg); }
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%;
             backface-visibility: hidden; border-radius: 20px;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 30px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            padding: 35px; display: flex; flex-direction: column; justify-content: center;
+            border: 1px solid #eee; background: white;
         }
-        .card-front { background: var(--branco); }
-        .card-back { background: var(--azul-escuro); color: var(--branco); transform: rotateY(180deg); }
-        
-        .icon-circle {
-            width: 70px; height: 70px; background: rgba(240, 90, 34, 0.1);
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 28px; color: var(--laranja); margin-bottom: 20px;
+        .card-back {
+            background: #fffcfb; transform: rotateY(180deg);
+            border-color: var(--laranja-organiza); text-align: center;
         }
-
-        /* --- WHATSAPP FIXO --- */
-        .btn-whats {
-            position: fixed; bottom: 30px; right: 30px;
-            background: #25d366; color: white; width: 65px; height: 65px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            font-size: 35px; z-index: 9999; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+        .icon-box {
+            width: 55px; height: 55px; background: #f0f4f8;
+            color: var(--azul-deep); border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; margin-bottom: 15px;
         }
 
-        /* Rodapé */
-        footer { background: var(--azul-escuro); color: var(--branco); padding: 50px 0; text-align: center; }
+        /* BOTÕES */
+        .btn-premium {
+            background: linear-gradient(90deg, #25d366, #128c7e);
+            border: none; color: white; padding: 16px 45px;
+            border-radius: 50px; font-weight: 700; transition: 0.3s;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
+            text-decoration: none; display: inline-block;
+        }
+        .btn-premium:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); color: white; }
+
+        .whatsapp-float {
+            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
+            background-color: #25d366; color: white; border-radius: 50px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 30px; z-index: 1000; box-shadow: 2px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        footer { background: var(--azul-deep); color: white; padding: 60px 0; }
+        .footer-nav a { color: var(--laranja-organiza); text-decoration: none; font-weight: 700; margin: 0 15px; font-size: 13px; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5522996214684" class="btn-whats" target="_blank">
+    <a href="https://wa.me/5522996214684" class="whatsapp-float" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <nav class="navbar-custom">
-        <div class="container text-center">
-            <div class="brand-text">ORGANIZA <span>SOLUÇÕES</span></div>
-            <small class="text-muted fw-bold">MACUÉ • SÃO PEDRO DA ALDEIA</small>
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#" style="font-size: 1.4rem; letter-spacing: -0.5px;">
+                <span style="color: var(--azul-deep);">ORGANIZA</span> <span style="color: var(--laranja-organiza);">EMPRÉSTIMOS</span>
+            </a>
+            <a href="https://wa.me/5522996214684" class="btn btn-outline-dark rounded-pill px-4 d-none d-md-block fw-bold">Falar com Consultor</a>
         </div>
     </nav>
 
-    <div class="slider-bancos">
-        <div class="slider-track">
-            <div class="slider-item"><img src="Itaú.png" alt="Itaú"></div>
-            <div class="slider-item"><img src="SANTANDER.png" alt="Santander"></div>
-            <div class="slider-item"><img src="DIGIO.png" alt="Digio"></div>
-            <div class="slider-item"><img src="FUTURO.png" alt="Futuro"></div>
-            <div class="slider-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
-            <div class="slider-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
-            <div class="slider-item"><img src="Itaú.png" alt="Itaú"></div>
-            <div class="slider-item"><img src="SANTANDER.png" alt="Santander"></div>
-            <div class="slider-item"><img src="DIGIO.png" alt="Digio"></div>
-            <div class="slider-item"><img src="FUTURO.png" alt="Futuro"></div>
-            <div class="slider-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
-            <div class="slider-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
+    <div class="top-bank-slider">
+        <div class="top-bank-track">
+            <div class="top-bank-item"><img src="Itaú.png" alt="Itaú"><span>ITAÚ</span></div>
+            <div class="top-bank-item"><img src="SANTANDER.png" alt="Santander"><span>SANTANDER</span></div>
+            <div class="top-bank-item"><img src="DIGIO.png" alt="Digio"><span>DIGIO</span></div>
+            <div class="top-bank-item"><img src="FUTURO.png" alt="Futuro"><span>FUTURO</span></div>
+            <div class="top-bank-item"><img src="AMIGOZ.png" alt="Amigoz"><span>AMIGOZ</span></div>
+            <div class="top-bank-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"><span>AKI CAPITAL</span></div>
+            <div class="top-bank-item"><img src="Itaú.png" alt="Itaú"><span>ITAÚ</span></div>
+            <div class="top-bank-item"><img src="SANTANDER.png" alt="Santander"><span>SANTANDER</span></div>
+            <div class="top-bank-item"><img src="DIGIO.png" alt="Digio"><span>DIGIO</span></div>
+            <div class="top-bank-item"><img src="FUTURO.png" alt="Futuro"><span>FUTURO</span></div>
+            <div class="top-bank-item"><img src="AMIGOZ.png" alt="Amigoz"><span>AMIGOZ</span></div>
+            <div class="top-bank-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"><span>AKI CAPITAL</span></div>
         </div>
     </div>
 
-    <header class="hero">
+    <header class="hero-section">
         <div class="container">
-            <h1>O Crédito que Você Precisa em <span>Macaé e São Pedro.</span></h1>
-            <p>Especialistas em Empréstimo Consignado para Servidores Municipais, Estaduais e Federais.</p>
-            <a href="https://wa.me/5522996214684" class="btn-cta">Simular pelo WhatsApp</a>
+            <div class="row align-items-center">
+                <div class="col-lg-7 text-center text-lg-start">
+                    <span class="badge rounded-pill bg-warning text-dark px-3 py-2 mb-3 fw-bold">
+                        <i class="fas fa-check-circle me-1"></i> Líder em Macaé e São Pedro
+                    </span>
+                    <h1 class="display-4 fw-bold mb-4">Seu Crédito com as <br><span class="text-gradient">Menores Taxas</span></h1>
+                    <p class="lead mb-4 opacity-75" style="max-width: 550px;">Consultoria especializada em Empréstimo Consignado para Servidores, Aposentados e Pensionistas.</p>
+                    
+                    <a href="https://wa.me/5522996214684" class="btn-premium btn-lg shadow-lg">
+                        <i class="fab fa-whatsapp me-2"></i> SIMULAR AGORA
+                    </a>
+                </div>
+                
+                <div class="col-lg-5 d-none d-lg-block">
+                    <div class="glass-card shadow-lg">
+                        <h5 class="fw-bold mb-4 text-warning">Por que a Organiza?</h5>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-3 d-flex align-items-center small"><i class="fas fa-bolt text-success me-3"></i> Dinheiro na conta em até 24h</li>
+                            <li class="mb-3 d-flex align-items-center small"><i class="fas fa-shield-alt text-success me-3"></i> Sem taxas antecipadas ou ocultas</li>
+                            <li class="mb-3 d-flex align-items-center small"><i class="fas fa-percentage text-success me-3"></i> Taxas a partir de 1,20% a.m.</li>
+                            <li class="d-flex align-items-center small"><i class="fas fa-user-check text-success me-3"></i> Atendimento Humano e Regional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="py-5">
+    <section class="py-5 bg-light">
         <div class="container py-5">
-            <div class="row text-center">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Nossas Soluções</h2>
+                <div style="width: 60px; height: 4px; background: var(--laranja-organiza); margin: 15px auto;"></div>
+            </div>
+            
+            <div class="row g-4">
                 <div class="col-md-4">
-                    <div class="card-box">
-                        <div class="card-flip">
+                    <div class="card-container">
+                        <div class="card-inner">
                             <div class="card-front">
-                                <div class="icon-circle"><i class="fas fa-hand-holding-usd"></i></div>
-                                <h4 class="fw-bold">Portabilidade</h4>
-                                <p class="text-muted small">Reduza suas parcelas agora.</p>
+                                <div class="icon-box"><i class="fas fa-exchange-alt"></i></div>
+                                <h5 class="fw-bold">Portabilidade</h5>
+                                <p class="text-muted small">Reduza o valor da sua parcela atual e receba a diferença de volta.</p>
                             </div>
                             <div class="card-back">
-                                <h5>Dinheiro no Bolso</h5>
-                                <p class="small">Trazemos seu contrato de outro banco com juros menores e liberamos o troco para você.</p>
+                                <h6 class="fw-bold text-dark">Dinheiro no Bolso</h6>
+                                <p class="small text-muted mt-2">Mude sua dívida para taxas menores e libere margem para um novo fôlego financeiro.</p>
+                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill mt-2">Saber Mais</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="card-box">
-                        <div class="card-flip">
+                    <div class="card-container">
+                        <div class="card-inner">
                             <div class="card-front">
-                                <div class="icon-circle"><i class="fas fa-bolt"></i></div>
-                                <h4 class="fw-bold">Saque FGTS</h4>
-                                <p class="text-muted small">Saldo liberado em minutos.</p>
+                                <div class="icon-box"><i class="fas fa-piggy-bank"></i></div>
+                                <h5 class="fw-bold">Saque FGTS</h5>
+                                <p class="text-muted small">Antecipe seu saque-aniversário hoje mesmo, sem parcelas mensais.</p>
                             </div>
                             <div class="card-back">
-                                <h5>Sem Carnê Mensal</h5>
-                                <p class="small">Antecipe seu saque-aniversário sem comprometer sua renda mensal. Rápido e digital.</p>
+                                <h6 class="fw-bold text-dark">Saque Imediato</h6>
+                                <p class="small text-muted mt-2">Antecipe até 10 anos do seu FGTS. O pagamento é feito pelo saldo do fundo.</p>
+                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill mt-2">Antecipar</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
-                    <div class="card-box">
-                        <div class="card-flip">
+                    <div class="card-container">
+                        <div class="card-inner">
                             <div class="card-front">
-                                <div class="icon-circle"><i class="fas fa-id-card"></i></div>
-                                <h4 class="fw-bold">Servidores</h4>
-                                <p class="text-muted small">Convênios Municipais.</p>
+                                <div class="icon-box"><i class="fas fa-file-signature"></i></div>
+                                <h5 class="fw-bold">Novos Contratos</h5>
+                                <p class="text-muted small">Dinheiro extra para quem possui margem disponível em folha.</p>
                             </div>
                             <div class="card-back">
-                                <h5>Macaé e São Pedro</h5>
-                                <p class="small">Condições exclusivas para funcionários das prefeituras da nossa região.</p>
+                                <h6 class="fw-bold text-dark">Crédito Rápido</h6>
+                                <p class="small text-muted mt-2">As melhores condições para servidores municipais de Macaé e região.</p>
+                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill mt-2">Consultar</a>
                             </div>
                         </div>
                     </div>
@@ -186,14 +251,18 @@
     </section>
 
     <footer>
-        <div class="container">
-            <h3 class="fw-bold">ORGANIZA <span>SOLUÇÕES</span></h3>
-            <p class="opacity-50 small">Atendimento especializado na Região dos Lagos.</p>
-            <div class="mt-4 fw-bold text-white">
-                <i class="fab fa-whatsapp text-success"></i> (22) 99621-4684
+        <div class="container text-center">
+            <h4 class="fw-bold mb-4">ORGANIZA <span style="color: var(--laranja-organiza);">EMPRÉSTIMOS</span></h4>
+            <div class="footer-nav mb-4">
+                <a href="#">PORTABILIDADE</a>
+                <a href="#">FGTS</a>
+                <a href="#">CONSIGNADO</a>
             </div>
+            <p class="small opacity-50 mb-1">Macaé | São Pedro da Aldeia | Região dos Lagos</p>
+            <p class="small opacity-50 mb-0">Contato: (22) 99621-4684 | Correspondente Bancário Autorizado</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
