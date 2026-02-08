@@ -4,202 +4,179 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organiza Soluções | Macaé e São Pedro</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --azul-marinho: #0a192f;
-            --laranja-organiza: #f05a22;
-            --branco-puro: #ffffff;
+            --azul-escuro: #0a192f;
+            --laranja: #f05a22;
+            --branco: #ffffff;
+            --cinza-bg: #f8f9fa;
         }
 
-        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; overflow-x: hidden; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--cinza-bg); color: var(--azul-escuro); margin: 0; }
 
-        /* --- ESTEIRA DE LOGOS (Corrigida para aparecer no fundo azul) --- */
-        .top-bank-slider {
-            background: var(--azul-marinho); 
-            border-bottom: 3px solid var(--laranja-organiza);
-            overflow: hidden;
-            padding: 15px 0;
-        }
-        .top-bank-track {
-            display: flex;
-            width: calc(180px * 12);
-            animation: scroll-top 25s linear infinite;
-            align-items: center;
-        }
-        .top-bank-item { width: 180px; padding: 0 20px; flex-shrink: 0; }
-        .top-bank-item img {
-            max-height: 30px;
-            width: auto;
-            /* Se as logos forem escuras, o filtro abaixo as deixará brancas para aparecer no fundo azul */
-            filter: brightness(0) invert(1);
-        }
-        @keyframes scroll-top {
+        /* --- NAVBAR --- */
+        .navbar-custom { background: var(--branco); border-bottom: 3px solid var(--laranja); padding: 15px 0; }
+        .brand-text { font-weight: 900; font-size: 1.5rem; color: var(--azul-escuro); text-transform: uppercase; }
+        .brand-text span { color: var(--laranja); }
+
+        /* --- ESTEIRA DE LOGOS (Fundo Branco para as logos aparecerem) --- */
+        .slider-bancos { background: var(--branco); padding: 25px 0; overflow: hidden; border-bottom: 1px solid #ddd; }
+        .slider-track { display: flex; width: calc(200px * 12); animation: scroll 30s linear infinite; align-items: center; }
+        .slider-item { width: 200px; padding: 0 30px; }
+        .slider-item img { max-width: 130px; height: auto; object-fit: contain; }
+
+        @keyframes scroll {
             0% { transform: translateX(0); }
-            100% { transform: translateX(calc(-180px * 6)); }
+            100% { transform: translateX(calc(-200px * 6)); }
         }
 
-        /* --- HERO SECTION (O layout que você gostou) --- */
-        .hero-section {
-            background: linear-gradient(135deg, var(--azul-marinho) 0%, #112240 100%);
-            padding: 80px 0;
-            color: var(--branco-puro);
+        /* --- HERO SECTION (O impacto que você quer) --- */
+        .hero {
+            background: linear-gradient(135deg, var(--azul-escuro) 0%, #112240 100%);
+            padding: 100px 0;
+            color: var(--branco);
+            text-align: center;
         }
-        .text-gradient {
-            background: linear-gradient(90deg, var(--laranja-organiza), #ff8c5a);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
-        }
-        .hero-section h1 { font-size: 2.5rem; line-height: 1.2; }
+        .hero h1 { font-weight: 900; font-size: 2.8rem; margin-bottom: 20px; line-height: 1.1; }
+        .hero h1 span { color: var(--laranja); }
+        .hero p { font-size: 1.2rem; opacity: 0.8; max-width: 700px; margin: 0 auto 40px; }
 
-        .btn-premium {
-            background: linear-gradient(90deg, #25d366, #128c7e);
-            border: none; color: white; font-weight: 700;
-            padding: 15px 35px; border-radius: 50px; transition: 0.3s;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-            text-decoration: none; display: inline-block;
+        .btn-cta {
+            background: var(--laranja);
+            color: var(--branco);
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 10px 20px rgba(240, 90, 34, 0.3);
         }
-        .btn-premium:hover { transform: translateY(-3px); color: white; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.5); }
+        .btn-cta:hover { background: #d44917; color: var(--branco); transform: scale(1.05); }
 
-        /* --- CARDS COM GIRO (Recuperados) --- */
-        .card-container { perspective: 1000px; height: 280px; cursor: pointer; margin-bottom: 20px; }
-        .card-inner {
+        /* --- CARDS QUE GIRAM (Design Original) --- */
+        .card-box { perspective: 1000px; height: 300px; margin-bottom: 30px; }
+        .card-flip {
             position: relative; width: 100%; height: 100%;
-            transition: transform 0.6s;
-            transform-style: preserve-3d;
+            transition: transform 0.8s; transform-style: preserve-3d;
         }
-        .card-container:hover .card-inner { transform: rotateY(180deg); }
+        .card-box:hover .card-flip { transform: rotateY(180deg); }
         .card-front, .card-back {
             position: absolute; width: 100%; height: 100%;
-            backface-visibility: hidden;
-            border-radius: 20px; padding: 25px;
-            background: var(--branco-puro); display: flex; flex-direction: column; justify-content: center;
-            border: 1px solid #eee;
+            backface-visibility: hidden; border-radius: 20px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 30px; border: 1px solid #eee; box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
-        .card-back { background: #fff8f5; transform: rotateY(180deg); border-color: var(--laranja-organiza); }
-        .icon-box {
-            width: 50px; height: 50px; background: rgba(240, 90, 34, 0.1);
-            color: var(--laranja-organiza); display: flex;
-            align-items: center; justify-content: center;
-            border-radius: 12px; margin: 0 auto 15px; font-size: 20px;
+        .card-front { background: var(--branco); }
+        .card-back { background: var(--azul-escuro); color: var(--branco); transform: rotateY(180deg); }
+        
+        .icon-circle {
+            width: 70px; height: 70px; background: rgba(240, 90, 34, 0.1);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 28px; color: var(--laranja); margin-bottom: 20px;
         }
 
-        .whatsapp-float {
-            position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px;
-            background-color: #25d366; color: white; border-radius: 50px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 30px; box-shadow: 2px 5px 20px rgba(0,0,0,0.3); z-index: 1000;
+        /* --- WHATSAPP FIXO --- */
+        .btn-whats {
+            position: fixed; bottom: 30px; right: 30px;
+            background: #25d366; color: white; width: 65px; height: 65px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 35px; z-index: 9999; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
         }
+
+        /* Rodapé */
+        footer { background: var(--azul-escuro); color: var(--branco); padding: 50px 0; text-align: center; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5522996214684" class="whatsapp-float" target="_blank">
+    <a href="https://wa.me/5522996214684" class="btn-whats" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <nav class="navbar bg-white shadow-sm sticky-top py-3">
-        <div class="container">
-            <a class="navbar-brand fw-bold" href="#" style="color: var(--azul-marinho);">
-                ORGANIZA <span style="color: var(--laranja-organiza);">SOLUÇÕES</span>
-            </a>
-            <span class="d-none d-md-inline small fw-bold text-muted">Macaé | São Pedro da Aldeia</span>
+    <nav class="navbar-custom">
+        <div class="container text-center">
+            <div class="brand-text">ORGANIZA <span>SOLUÇÕES</span></div>
+            <small class="text-muted fw-bold">MACUÉ • SÃO PEDRO DA ALDEIA</small>
         </div>
     </nav>
 
-    <div class="top-bank-slider">
-        <div class="top-bank-track">
-            <div class="top-bank-item"><img src="Itaú.png" alt="Itaú"></div>
-            <div class="top-bank-item"><img src="SANTANDER.png" alt="Santander"></div>
-            <div class="top-bank-item"><img src="DIGIO.png" alt="Digio"></div>
-            <div class="top-bank-item"><img src="FUTURO.png" alt="Futuro"></div>
-            <div class="top-bank-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
-            <div class="top-bank-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
-            <div class="top-bank-item"><img src="Itaú.png" alt="Itaú"></div>
-            <div class="top-bank-item"><img src="SANTANDER.png" alt="Santander"></div>
-            <div class="top-bank-item"><img src="DIGIO.png" alt="Digio"></div>
-            <div class="top-bank-item"><img src="FUTURO.png" alt="Futuro"></div>
-            <div class="top-bank-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
-            <div class="top-bank-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
+    <div class="slider-bancos">
+        <div class="slider-track">
+            <div class="slider-item"><img src="Itaú.png" alt="Itaú"></div>
+            <div class="slider-item"><img src="SANTANDER.png" alt="Santander"></div>
+            <div class="slider-item"><img src="DIGIO.png" alt="Digio"></div>
+            <div class="slider-item"><img src="FUTURO.png" alt="Futuro"></div>
+            <div class="slider-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
+            <div class="slider-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
+            <div class="slider-item"><img src="Itaú.png" alt="Itaú"></div>
+            <div class="slider-item"><img src="SANTANDER.png" alt="Santander"></div>
+            <div class="slider-item"><img src="DIGIO.png" alt="Digio"></div>
+            <div class="slider-item"><img src="FUTURO.png" alt="Futuro"></div>
+            <div class="slider-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
+            <div class="slider-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
         </div>
     </div>
 
-    <header class="hero-section">
+    <header class="hero">
         <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 text-center text-lg-start">
-                    <h1 class="fw-bold mb-4">Crédito Consignado em <span class="text-gradient">Macaé e São Pedro.</span></h1>
-                    <p class="lead mb-4 opacity-75">As melhores taxas da Região para Servidores, Aposentados e Pensionistas.</p>
-                    <a href="https://wa.me/5522996214684" class="btn-premium">
-                        <i class="fab fa-whatsapp me-2"></i> SIMULAR AGORA
-                    </a>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                    <div class="bg-white p-4 rounded-4 shadow-lg text-dark">
-                        <h6 class="fw-bold mb-3 border-bottom pb-2">Vantagens Organiza</h6>
-                        <ul class="list-unstyled small">
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Taxas a partir de 1,20%</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Convênio com Prefeituras</li>
-                            <li class="mb-2"><i class="fas fa-check text-success me-2"></i> Sem consulta SPC/Serasa</li>
-                            <li><i class="fas fa-check text-success me-2"></i> Dinheiro em até 24h</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+            <h1>O Crédito que Você Precisa em <span>Macaé e São Pedro.</span></h1>
+            <p>Especialistas em Empréstimo Consignado para Servidores Municipais, Estaduais e Federais.</p>
+            <a href="https://wa.me/5522996214684" class="btn-cta">Simular pelo WhatsApp</a>
         </div>
     </header>
 
     <section class="py-5">
-        <div class="container py-4">
-            <h2 class="text-center fw-bold mb-5">Nossas Soluções</h2>
-            <div class="row g-4 text-center">
+        <div class="container py-5">
+            <div class="row text-center">
                 <div class="col-md-4">
-                    <div class="card-container">
-                        <div class="card-inner">
+                    <div class="card-box">
+                        <div class="card-flip">
                             <div class="card-front">
-                                <div class="icon-box"><i class="fas fa-exchange-alt"></i></div>
-                                <h5 class="fw-bold">Portabilidade</h5>
-                                <p class="text-muted small">Reduza juros e receba troco.</p>
+                                <div class="icon-circle"><i class="fas fa-hand-holding-usd"></i></div>
+                                <h4 class="fw-bold">Portabilidade</h4>
+                                <p class="text-muted small">Reduza suas parcelas agora.</p>
                             </div>
                             <div class="card-back">
-                                <h6 class="fw-bold mb-2">Dinheiro de Volta</h6>
-                                <p class="small">Trazemos sua dívida e liberamos saldo novo para você.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Saber mais</a>
+                                <h5>Dinheiro no Bolso</h5>
+                                <p class="small">Trazemos seu contrato de outro banco com juros menores e liberamos o troco para você.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card-container">
-                        <div class="card-inner">
+                    <div class="card-box">
+                        <div class="card-flip">
                             <div class="card-front">
-                                <div class="icon-box"><i class="fas fa-piggy-bank"></i></div>
-                                <h5 class="fw-bold">Saque FGTS</h5>
-                                <p class="text-muted small">Antecipe seu saque-aniversário.</p>
+                                <div class="icon-circle"><i class="fas fa-bolt"></i></div>
+                                <h4 class="fw-bold">Saque FGTS</h4>
+                                <p class="text-muted small">Saldo liberado em minutos.</p>
                             </div>
                             <div class="card-back">
-                                <h6 class="fw-bold mb-2">Rápido e Fácil</h6>
-                                <p class="small">Antecipe até 10 parcelas sem boletos mensais.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Antecipar</a>
+                                <h5>Sem Carnê Mensal</h5>
+                                <p class="small">Antecipe seu saque-aniversário sem comprometer sua renda mensal. Rápido e digital.</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card-container">
-                        <div class="card-inner">
+                    <div class="card-box">
+                        <div class="card-flip">
                             <div class="card-front">
-                                <div class="icon-box"><i class="fas fa-id-badge"></i></div>
-                                <h5 class="fw-bold">Servidores</h5>
-                                <p class="text-muted small">Prefeituras Locais.</p>
+                                <div class="icon-circle"><i class="fas fa-id-card"></i></div>
+                                <h4 class="fw-bold">Servidores</h4>
+                                <p class="text-muted small">Convênios Municipais.</p>
                             </div>
                             <div class="card-back">
-                                <h6 class="fw-bold mb-2">Taxas Exclusivas</h6>
-                                <p class="small">Condições especiais para Macaé e São Pedro da Aldeia.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Consultar</a>
+                                <h5>Macaé e São Pedro</h5>
+                                <p class="small">Condições exclusivas para funcionários das prefeituras da nossa região.</p>
                             </div>
                         </div>
                     </div>
@@ -208,13 +185,15 @@
         </div>
     </section>
 
-    <footer class="py-5" style="background: var(--azul-marinho); color: white; text-align: center;">
+    <footer>
         <div class="container">
-            <h4 class="fw-bold mb-0">ORGANIZA <span style="color: var(--laranja-organiza);">SOLUÇÕES</span></h4>
-            <p class="small opacity-50 mt-2">© 2026 Macaé | São Pedro da Aldeia</p>
+            <h3 class="fw-bold">ORGANIZA <span>SOLUÇÕES</span></h3>
+            <p class="opacity-50 small">Atendimento especializado na Região dos Lagos.</p>
+            <div class="mt-4 fw-bold text-white">
+                <i class="fab fa-whatsapp text-success"></i> (22) 99621-4684
+            </div>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
