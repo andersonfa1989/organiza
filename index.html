@@ -3,240 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Organiza Empréstimos | Consultoria Financeira Premium</title>
+    <title>Organiza Empréstimos | Soluções Financeiras</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6941311170472131" crossorigin="anonymous"></script>
+
     <style>
-        :root {
-            --azul-premium: #0a192f;
-            --dourado-premium: #ffcc00;
-        }
+        :root { --azul: #0a192f; --ouro: #ffcc00; --verde: #25d366; }
+        body { font-family: 'Inter', sans-serif; background: #f8f9fa; margin: 0; }
 
-        body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; overflow-x: hidden; }
+        /* Esteira de Logos */
+        .slider-bancos { background: var(--azul); padding: 15px 0; overflow: hidden; border-bottom: 2px solid var(--ouro); }
+        .track { display: flex; width: calc(250px * 12); animation: scroll 30s linear infinite; }
+        .track img { height: 35px; margin: 0 40px; filter: brightness(0) invert(1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(calc(-250px * 6)); } }
+
+        /* Cards Flip */
+        .card-container { perspective: 1000px; height: 320px; margin-bottom: 30px; }
+        .card-inner { position: relative; width: 100%; height: 100%; transition: transform 0.6s; transform-style: preserve-3d; cursor: pointer; }
+        .card-inner.is-flipped { transform: rotateY(180deg); }
+        .front, .back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; -webkit-backface-visibility: hidden; border-radius: 15px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1); border: 1px solid #eee; }
+        .front { background: white; color: var(--azul); }
+        .back { background: #fff; transform: rotateY(180deg); border: 2px solid var(--ouro); text-align: center; }
         
-        /* --- ESTEIRA DE LOGOS --- */
-        .top-bank-slider {
-            background: var(--azul-premium); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            overflow: hidden;
-            padding: 15px 0;
-            white-space: nowrap;
-        }
-        .top-bank-track {
-            display: inline-flex;
-            align-items: center;
-            animation: scroll-top 30s linear infinite;
-        }
-        .top-bank-item {
-            margin: 0 40px;
-        }
-        .top-bank-item img {
-            height: 35px;
-            width: auto;
-            filter: brightness(0) invert(1);
-        }
-        @keyframes scroll-top {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* --- HERO --- */
-        .hero-section {
-            background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
-            padding: 80px 0;
-            color: white;
-        }
-
-        /* --- CORREÇÃO DOS CARDS (FLIP) --- */
-        .card-container { 
-            perspective: 1000px; 
-            height: 300px; 
-            background: transparent;
-        }
+        .icon-box { font-size: 3rem; color: var(--azul); margin-bottom: 15px; }
+        .btn-wpp { background: var(--verde); color: white; border-radius: 50px; padding: 10px 25px; text-decoration: none; font-weight: bold; }
         
-        .card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-            cursor: pointer;
-        }
-
-        /* O segredo para funcionar em todos os navegadores */
-        .card-container:hover .card-inner {
-            transform: rotateY(180deg);
-        }
-
-        .card-front, .card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden; /* Safari */
-            backface-visibility: hidden;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-
-        .card-front {
-            background-color: white;
-            color: var(--azul-premium);
-            border: 1px solid #eee;
-        }
-
-        .card-back {
-            background-color: #fafafa;
-            color: var(--azul-premium);
-            transform: rotateY(180deg);
-            border: 2px solid var(--dourado-premium);
-        }
-
-        .icon-box {
-            font-size: 40px;
-            color: var(--azul-premium);
-            margin-bottom: 15px;
-        }
-
-        /* --- FOOTER --- */
-        footer { background-color: var(--azul-premium); color: white; padding: 50px 0; }
-        .footer-nav-links a { 
-            color: var(--dourado-premium); 
-            text-decoration: none; 
-            font-weight: 600; 
-            margin: 0 15px; 
-            font-size: 14px;
-            transition: 0.3s;
-        }
-        .footer-nav-links a:hover { color: white; text-underline-offset: 5px; text-decoration: underline; }
-
-        .btn-premium {
-            background: linear-gradient(90deg, #25d366, #128c7e);
-            border: none; color: white; font-weight: 600; padding: 12px 30px;
-        }
+        footer { background: var(--azul); color: white; padding: 60px 0 30px; }
+        .footer-nav a { color: var(--ouro); text-decoration: none; margin: 0 10px; font-weight: bold; text-transform: uppercase; font-size: 12px; }
+        
+        .ads-container { background: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; margin-top: 30px; }
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+    <nav class="navbar navbar-light bg-white shadow-sm sticky-top">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="index.html">
-                <span style="color: var(--azul-premium);">ORGANIZA</span> <span class="text-muted fw-light">EMPRÉSTIMOS</span>
-            </a>
+            <a class="navbar-brand fw-bold" href="index.html" style="color: var(--azul);">ORGANIZA EMPRÉSTIMOS</a>
+            <a href="https://wa.me/5522996214684" class="btn btn-success rounded-pill px-4 btn-sm">WhatsApp</a>
         </div>
     </nav>
 
-    <div class="top-bank-slider">
-        <div class="top-bank-track">
-            <div class="top-bank-item"><img src="Itaú.png"></div>
-            <div class="top-bank-item"><img src="SANTANDER.png"></div>
-            <div class="top-bank-item"><img src="DIGIO.png"></div>
-            <div class="top-bank-item"><img src="FUTURO.png"></div>
-            <div class="top-bank-item"><img src="AMIGOZ.png"></div>
-            <div class="top-bank-item"><img src="AKI-CAPITAL.png"></div>
-            <div class="top-bank-item"><img src="Itaú.png"></div>
-            <div class="top-bank-item"><img src="SANTANDER.png"></div>
-            <div class="top-bank-item"><img src="DIGIO.png"></div>
-            <div class="top-bank-item"><img src="FUTURO.png"></div>
-            <div class="top-bank-item"><img src="AMIGOZ.png"></div>
-            <div class="top-bank-item"><img src="AKI-CAPITAL.png"></div>
+    <div class="slider-bancos">
+        <div class="track">
+            <img src="Itaú.png" alt="Itaú">
+            <img src="SANTANDER.png" alt="Santander">
+            <img src="DIGIO.png" alt="Digio">
+            <img src="FUTURO.png" alt="Futuro">
+            <img src="AMIGOZ.png" alt="Amigoz">
+            <img src="AKI-CAPITAL.png" alt="Aki">
+            <img src="Itaú.png" alt="Itaú">
+            <img src="SANTANDER.png" alt="Santander">
+            <img src="DIGIO.png" alt="Digio">
+            <img src="FUTURO.png" alt="Futuro">
+            <img src="AMIGOZ.png" alt="Amigoz">
+            <img src="AKI-CAPITAL.png" alt="Aki">
         </div>
     </div>
 
-    <header class="hero-section">
-        <div class="container text-center">
-            <h1 class="display-4 fw-bold">Crédito Inteligente</h1>
-            <p class="lead">As menores taxas para você organizar sua vida financeira.</p>
-            <a href="https://wa.me/5522996214684" class="btn btn-premium rounded-pill mt-3">SIMULAR VIA WHATSAPP</a>
-        </div>
-    </header>
-
-    <section class="py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="card-container">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="icon-box"><i class="fas fa-university"></i></div>
-                                <h5 class="fw-bold">Consignado INSS</h5>
-                            </div>
-                            <div class="card-back">
-                                <h5 class="fw-bold text-dark">Melhores Prazos</h5>
-                                <p class="small text-muted">Aposentados e Pensionistas com as menores taxas do mercado.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Saber Mais</a>
-                            </div>
+    <div class="container py-5 text-center">
+        <h2 class="fw-bold mb-5" style="color: var(--azul);">Nossas Soluções</h2>
+        <div class="row">
+            
+            <div class="col-md-4 col-6">
+                <div class="card-container" onclick="this.querySelector('.card-inner').classList.toggle('is-flipped')">
+                    <div class="card-inner">
+                        <div class="front">
+                            <div class="icon-box"><i class="fas fa-user-shield"></i></div>
+                            <h6>INSS</h6>
                         </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-container">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="icon-box"><i class="fas fa-exchange-alt"></i></div>
-                                <h5 class="fw-bold">Portabilidade</h5>
-                            </div>
-                            <div class="card-back">
-                                <h5 class="fw-bold text-dark">Reduza sua Parcela</h5>
-                                <p class="small text-muted">Trazemos sua dívida de outro banco com juros muito menores.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Saber Mais</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="card-container">
-                        <div class="card-inner">
-                            <div class="card-front">
-                                <div class="icon-box"><i class="fas fa-wallet"></i></div>
-                                <h5 class="fw-bold">Antecipação FGTS</h5>
-                            </div>
-                            <div class="card-back">
-                                <h5 class="fw-bold text-dark">Dinheiro Rápido</h5>
-                                <p class="small text-muted">Antecipe até 10 anos do seu saque aniversário agora.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Saber Mais</a>
-                            </div>
+                        <div class="back">
+                            <p class="small">Aposentados e Pensionistas</p>
+                            <a href="inss.html" class="btn btn-dark btn-sm">Ver Mais</a>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-4 col-6">
+                <div class="card-container" onclick="this.querySelector('.card-inner').classList.toggle('is-flipped')">
+                    <div class="card-inner">
+                        <div class="front">
+                            <div class="icon-box"><i class="fas fa-hand-holding-usd"></i></div>
+                            <h6>CRÉDITO</h6>
+                        </div>
+                        <div class="back">
+                            <p class="small">Crédito Consignado Novo</p>
+                            <a href="credito-consignado.html" class="btn btn-dark btn-sm">Ver Mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="card-container" onclick="this.querySelector('.card-inner').classList.toggle('is-flipped')">
+                    <div class="card-inner">
+                        <div class="front">
+                            <div class="icon-box"><i class="fas fa-credit-card"></i></div>
+                            <h6>CARTÃO</h6>
+                        </div>
+                        <div class="back">
+                            <p class="small">Cartão Consignado</p>
+                            <a href="cartao-consignado.html" class="btn btn-dark btn-sm">Ver Mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="card-container" onclick="this.querySelector('.card-inner').classList.toggle('is-flipped')">
+                    <div class="card-inner">
+                        <div class="front">
+                            <div class="icon-box"><i class="fas fa-sync-alt"></i></div>
+                            <h6>REFIN</h6>
+                        </div>
+                        <div class="back">
+                            <p class="small">Refinanciamento</p>
+                            <a href="refinanciamento.html" class="btn btn-dark btn-sm">Ver Mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="card-container" onclick="this.querySelector('.card-inner').classList.toggle('is-flipped')">
+                    <div class="card-inner">
+                        <div class="front">
+                            <div class="icon-box"><i class="fas fa-medal"></i></div>
+                            <h6>MILITARES</h6>
+                        </div>
+                        <div class="back">
+                            <p class="small">Servidores e Militares</p>
+                            <a href="servidores-militares.html" class="btn btn-dark btn-sm">Ver Mais</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 col-6">
+                <div class="card-container" onclick="this.querySelector('.card-inner').classList.toggle('is-flipped')">
+                    <div class="card-inner">
+                        <div class="front">
+                            <div class="icon-box"><i class="fas fa-piggy-bank"></i></div>
+                            <h6>FGTS</h6>
+                        </div>
+                        <div class="back">
+                            <p class="small">Antecipação FGTS</p>
+                            <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm">Simular</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
-    </section>
+    </div>
 
     <footer class="text-center">
         <div class="container">
-            <h4 class="fw-bold mb-4">ORGANIZA <span style="color: var(--dourado-premium);">EMPRÉSTIMOS</span></h4>
-            
-            <div class="footer-nav-links mb-4">
-                <a href="consignado.html">CONSIGNADO</a>
-                <a href="portabilidade.html">PORTABILIDADE</a>
-                <a href="fgts.html">FGTS</a>
+            <h4 class="fw-bold mb-4">ORGANIZA <span style="color: var(--ouro);">EMPRÉSTIMOS</span></h4>
+            <div class="footer-nav mb-4">
                 <a href="inss.html">INSS</a>
+                <a href="credito-consignado.html">Consignado</a>
+                <a href="cartao-consignado.html">Cartão</a>
+                <a href="refinanciamento.html">Refin</a>
+                <a href="servidores-militares.html">Militares</a>
             </div>
 
-            <p class="small opacity-75">Macaé | São Pedro da Aldeia | Rio das Ostras | Búzios</p>
-            <p class="small">Contato: (22) 99621-4684</p>
-            
-            <div class="mt-4">
+            <div class="ads-container">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6941311170472131" crossorigin="anonymous"></script>
                 <ins class="adsbygoogle"
-                     style="display:inline-block;width:100%;max-width:728px;height:90px"
+                     style="display:block"
                      data-ad-client="ca-pub-6941311170472131"
-                     data-ad-slot="1234567890"></ins>
+                     data-ad-slot="1234567890" 
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
                 <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
             </div>
+
+            <p class="small mt-4 opacity-50">Cnpj: 00.000.000/0001-00 | Macaé - RJ</p>
         </div>
     </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
