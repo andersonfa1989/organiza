@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Organiza Empréstimos | Consultoria Financeira Premium</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
             --azul-premium: #0a192f;
@@ -15,12 +17,12 @@
 
         body { font-family: 'Inter', sans-serif; background-color: #f8f9fa; overflow-x: hidden; }
         
-        /* --- ESTEIRA DE LOGOS (LIMPA) --- */
+        /* --- ESTEIRA DE LOGOS --- */
         .top-bank-slider {
             background: var(--azul-premium); 
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
             overflow: hidden;
-            padding: 20px 0;
+            padding: 15px 0;
             white-space: nowrap;
         }
         .top-bank-track {
@@ -29,100 +31,104 @@
             animation: scroll-top 30s linear infinite;
         }
         .top-bank-item {
-            display: flex;
-            align-items: center;
-            margin: 0 45px;
+            margin: 0 40px;
         }
         .top-bank-item img {
-            height: 35px; /* Aumentado levemente já que não tem texto */
+            height: 35px;
             width: auto;
-            display: block;
-            filter: brightness(0) invert(1); 
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            filter: brightness(0) invert(1);
         }
-        .top-bank-item img:hover { opacity: 1; }
-
         @keyframes scroll-top {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
         }
 
-        /* --- HERO & GLASS CARD --- */
+        /* --- HERO --- */
         .hero-section {
             background: linear-gradient(135deg, #0a192f 0%, #112240 100%);
-            padding: 100px 0;
-            min-height: 550px;
-            display: flex;
-            align-items: center;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 20px;
+            padding: 80px 0;
             color: white;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
         }
 
-        .text-gradient {
-            background: linear-gradient(90deg, #ffcc00, #ffae00);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            font-weight: 800;
+        /* --- CORREÇÃO DOS CARDS (FLIP) --- */
+        .card-container { 
+            perspective: 1000px; 
+            height: 300px; 
+            background: transparent;
         }
+        
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        /* O segredo para funcionar em todos os navegadores */
+        .card-container:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden; /* Safari */
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-front {
+            background-color: white;
+            color: var(--azul-premium);
+            border: 1px solid #eee;
+        }
+
+        .card-back {
+            background-color: #fafafa;
+            color: var(--azul-premium);
+            transform: rotateY(180deg);
+            border: 2px solid var(--dourado-premium);
+        }
+
+        .icon-box {
+            font-size: 40px;
+            color: var(--azul-premium);
+            margin-bottom: 15px;
+        }
+
+        /* --- FOOTER --- */
+        footer { background-color: var(--azul-premium); color: white; padding: 50px 0; }
+        .footer-nav-links a { 
+            color: var(--dourado-premium); 
+            text-decoration: none; 
+            font-weight: 600; 
+            margin: 0 15px; 
+            font-size: 14px;
+            transition: 0.3s;
+        }
+        .footer-nav-links a:hover { color: white; text-underline-offset: 5px; text-decoration: underline; }
 
         .btn-premium {
             background: linear-gradient(90deg, #25d366, #128c7e);
-            border: none; color: white; font-weight: 600;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
-            transition: all 0.3s ease;
+            border: none; color: white; font-weight: 600; padding: 12px 30px;
         }
-        .btn-premium:hover { transform: translateY(-3px); color: white; box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
-
-        .whatsapp-float {
-            position: fixed; width: 60px; height: 60px; bottom: 40px; right: 40px;
-            background-color: #25d366; color: #FFF; border-radius: 50px;
-            text-align: center; font-size: 30px; box-shadow: 2px 2px 10px rgba(0,0,0,0.3);
-            z-index: 1000; display: flex; align-items: center; justify-content: center;
-            text-decoration: none;
-        }
-
-        /* --- FLIP CARDS --- */
-        .card-container { perspective: 1000px; height: 280px; }
-        .card-inner {
-            position: relative; width: 100%; height: 100%;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-style: preserve-3d;
-        }
-        .card-container:hover .card-inner { transform: rotateY(180deg); }
-        .card-front, .card-back {
-            position: absolute; width: 100%; height: 100%;
-            backface-visibility: hidden; border-radius: 15px;
-            padding: 30px; border: 1px solid #eee; background: white;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .card-back { background: #fdfdfd; transform: rotateY(180deg); border-color: var(--dourado-premium); }
-        
-        .icon-box {
-            width: 50px; height: 50px; background: #f0f4f8; color: var(--azul-premium);
-            display: flex; align-items: center; justify-content: center;
-            border-radius: 12px; margin-bottom: 15px; font-size: 20px;
-        }
-
-        footer { background-color: var(--azul-premium); color: white; padding: 60px 0; }
     </style>
 </head>
 <body>
 
-    <a href="https://wa.me/5522996214684" class="whatsapp-float" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top py-3">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="#">
+            <a class="navbar-brand fw-bold" href="index.html">
                 <span style="color: var(--azul-premium);">ORGANIZA</span> <span class="text-muted fw-light">EMPRÉSTIMOS</span>
             </a>
         </div>
@@ -130,85 +136,75 @@
 
     <div class="top-bank-slider">
         <div class="top-bank-track">
-            <div class="top-bank-item"><img src="Itaú.png" alt="Itaú"></div>
-            <div class="top-bank-item"><img src="SANTANDER.png" alt="Santander"></div>
-            <div class="top-bank-item"><img src="DIGIO.png" alt="Digio"></div>
-            <div class="top-bank-item"><img src="FUTURO.png" alt="Futuro"></div>
-            <div class="top-bank-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
-            <div class="top-bank-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
-            <div class="top-bank-item"><img src="Itaú.png" alt="Itaú"></div>
-            <div class="top-bank-item"><img src="SANTANDER.png" alt="Santander"></div>
-            <div class="top-bank-item"><img src="DIGIO.png" alt="Digio"></div>
-            <div class="top-bank-item"><img src="FUTURO.png" alt="Futuro"></div>
-            <div class="top-bank-item"><img src="AMIGOZ.png" alt="Amigoz"></div>
-            <div class="top-bank-item"><img src="AKI-CAPITAL.png" alt="Aki Capital"></div>
+            <div class="top-bank-item"><img src="Itaú.png"></div>
+            <div class="top-bank-item"><img src="SANTANDER.png"></div>
+            <div class="top-bank-item"><img src="DIGIO.png"></div>
+            <div class="top-bank-item"><img src="FUTURO.png"></div>
+            <div class="top-bank-item"><img src="AMIGOZ.png"></div>
+            <div class="top-bank-item"><img src="AKI-CAPITAL.png"></div>
+            <div class="top-bank-item"><img src="Itaú.png"></div>
+            <div class="top-bank-item"><img src="SANTANDER.png"></div>
+            <div class="top-bank-item"><img src="DIGIO.png"></div>
+            <div class="top-bank-item"><img src="FUTURO.png"></div>
+            <div class="top-bank-item"><img src="AMIGOZ.png"></div>
+            <div class="top-bank-item"><img src="AKI-CAPITAL.png"></div>
         </div>
     </div>
 
-    <header class="hero-section text-white">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-7 text-center text-lg-start">
-                    <span class="badge rounded-pill bg-warning text-dark px-3 py-2 mb-3 fw-bold">Líder Regional</span>
-                    <h1 class="display-4 fw-bold mb-4">Crédito Inteligente com as <span class="text-gradient">Menores Taxas</span></h1>
-                    <p class="lead mb-4 opacity-75">As melhores soluções em Consignado para Aposentados e Pensionistas.</p>
-                    <a href="https://wa.me/5522996214684" class="btn btn-premium btn-lg rounded-pill px-5 py-3 shadow">SIMULAR AGORA</a>
-                </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                    <div class="glass-card p-4">
-                        <h5 class="fw-bold mb-3 text-center">Vantagens Organiza</h5>
-                        <ul class="list-unstyled mb-0">
-                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Dinheiro na conta em 24h</li>
-                            <li class="mb-2"><i class="fas fa-check text-warning me-2"></i> Taxas a partir de 1,20% a.m.</li>
-                            <li><i class="fas fa-check text-warning me-2"></i> Sem taxas antecipadas</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+    <header class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold">Crédito Inteligente</h1>
+            <p class="lead">As menores taxas para você organizar sua vida financeira.</p>
+            <a href="https://wa.me/5522996214684" class="btn btn-premium rounded-pill mt-3">SIMULAR VIA WHATSAPP</a>
         </div>
     </header>
 
-    <section class="py-5 bg-light">
-        <div class="container py-4">
-            <div class="row g-4 text-center">
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
                 <div class="col-md-4">
                     <div class="card-container">
                         <div class="card-inner">
                             <div class="card-front">
-                                <div class="icon-box mx-auto"><i class="fas fa-exchange-alt"></i></div>
-                                <h5 class="fw-bold">Portabilidade</h5>
+                                <div class="icon-box"><i class="fas fa-university"></i></div>
+                                <h5 class="fw-bold">Consignado INSS</h5>
                             </div>
                             <div class="card-back">
-                                <p>Reduza juros e libere dinheiro novo.</p>
+                                <h5 class="fw-bold text-dark">Melhores Prazos</h5>
+                                <p class="small text-muted">Aposentados e Pensionistas com as menores taxas do mercado.</p>
                                 <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Saber Mais</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-container">
                         <div class="card-inner">
                             <div class="card-front">
-                                <div class="icon-box mx-auto"><i class="fas fa-piggy-bank"></i></div>
-                                <h5 class="fw-bold">Antecipação FGTS</h5>
+                                <div class="icon-box"><i class="fas fa-exchange-alt"></i></div>
+                                <h5 class="fw-bold">Portabilidade</h5>
                             </div>
                             <div class="card-back">
-                                <p>Antecipe até 10 anos do seu saque-aniversário.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Simular</a>
+                                <h5 class="fw-bold text-dark">Reduza sua Parcela</h5>
+                                <p class="small text-muted">Trazemos sua dívida de outro banco com juros muito menores.</p>
+                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Saber Mais</a>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-md-4">
                     <div class="card-container">
                         <div class="card-inner">
                             <div class="card-front">
-                                <div class="icon-box mx-auto"><i class="fas fa-file-invoice-dollar"></i></div>
-                                <h5 class="fw-bold">Margem Nova</h5>
+                                <div class="icon-box"><i class="fas fa-wallet"></i></div>
+                                <h5 class="fw-bold">Antecipação FGTS</h5>
                             </div>
                             <div class="card-back">
-                                <p>Crédito rápido para quem tem margem livre.</p>
-                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Consultar</a>
+                                <h5 class="fw-bold text-dark">Dinheiro Rápido</h5>
+                                <p class="small text-muted">Antecipe até 10 anos do seu saque aniversário agora.</p>
+                                <a href="https://wa.me/5522996214684" class="btn btn-dark btn-sm rounded-pill">Saber Mais</a>
                             </div>
                         </div>
                     </div>
@@ -217,11 +213,19 @@
         </div>
     </section>
 
-    <footer>
-        <div class="container text-center">
+    <footer class="text-center">
+        <div class="container">
             <h4 class="fw-bold mb-4">ORGANIZA <span style="color: var(--dourado-premium);">EMPRÉSTIMOS</span></h4>
-            <p class="small mb-1">Macaé | São Pedro da Aldeia | Rio das Ostras | Búzios</p>
-            <p class="small opacity-75">Contato: (22) 99621-4684</p>
+            
+            <div class="footer-nav-links mb-4">
+                <a href="consignado.html">CONSIGNADO</a>
+                <a href="portabilidade.html">PORTABILIDADE</a>
+                <a href="fgts.html">FGTS</a>
+                <a href="inss.html">INSS</a>
+            </div>
+
+            <p class="small opacity-75">Macaé | São Pedro da Aldeia | Rio das Ostras | Búzios</p>
+            <p class="small">Contato: (22) 99621-4684</p>
             
             <div class="mt-4">
                 <ins class="adsbygoogle"
