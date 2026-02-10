@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servidores e Militares | Consig Online</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #333; line-height: 1.6; }
+        
+        /* Banner Principal - Usando a Imagem 1 (Soldados em Ação) */
+        .hero-militar { 
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('BANNER_MILITAR_ACAO.png'); 
+            background-size: cover; 
+            background-position: center;
+            padding: 120px 0; 
+            color: white; 
+        }
+
+        .btn-simular { 
+            background: #00a8ff; 
+            border: none; 
+            padding: 15px 40px; 
+            font-weight: bold; 
+            color: white; 
+            border-radius: 5px; 
+            text-decoration: none;
+            display: inline-block;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-simular:hover { background: #0086cc; transform: translateY(-3px); color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+
+        /* Estilo dos cards informativos */
+        .info-card {
+            border: none;
+            border-left: 5px solid #00a8ff;
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 0 10px 10px 0;
+            transition: 0.3s;
+        }
+        .info-card:hover { background: #eef7ff; transform: translateX(5px); }
+        .check-icon { color: #00a8ff; margin-right: 12px; font-size: 1.2rem; }
+
+        /* Estilo da Imagem 2 (Soldados em Formação) */
+        .img-militar-shadow { 
+            border-radius: 15px; 
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
+            transition: 0.5s;
+        }
+        .img-militar-shadow:hover { transform: scale(1.02); }
+
+        .section-title { color: #0a192f; font-weight: 800; position: relative; padding-bottom: 15px; }
+        .section-title::after { content: ''; width: 60px; height: 4px; background: #00a8ff; position: absolute; bottom: 0; left: 0; }
+    </style>
+
+    <script>
+      if (window.location.pathname.endsWith('/index.html')) {
+        const cleanUrl = window.location.pathname.replace('/index.html', '/');
+        window.history.replaceState({}, document.title, cleanUrl);
+      } else if (window.location.pathname.endsWith('.html')) {
+        const cleanUrl = window.location.pathname.replace('.html', '');
+        window.history.replaceState({}, document.title, cleanUrl);
+      }
+    </script>
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="/" style="color: #0a192f;">
+                <i class="fas fa-chevron-left me-2 text-primary"></i> CONSIG ONLINE
+            </a>
+            <div class="d-flex align-items-center">
+                <a href="https://wa.me/5522999461668?text=Olá! Vim pelo site e sou Militar." class="btn btn-success btn-sm rounded-pill px-4 fw-bold">FALAR COM CONSULTOR</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-militar text-center text-md-start">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <span class="badge bg-primary mb-3 px-3 py-2">CONDIÇÕES EXCLUSIVAS 2024</span>
+                    <h1 class="display-3 fw-bold mb-3">Crédito para quem <br><span style="color: #00a8ff;">Serve à Nação.</span></h1>
+                    <p class="lead mb-5 opacity-90">Soluções financeiras com taxas reduzidas e prazos diferenciados para Militares das Forças Armadas e Servidores Públicos Federais.</p>
+                    <a href="https://wa.me/5522999461668?text=Olá! Vim pelo site e sou Militar." class="btn-simular">Simular Empréstimo Agora</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-5 my-5">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-md-6 order-2 order-md-1">
+                    <h2 class="section-title mb-4">Quem pode contratar?</h2>
+                    <p class="text-muted mb-4">Entendemos as particularidades da carreira pública e militar. Por isso, oferecemos um atendimento especializado para cada categoria:</p>
+                    
+                    <div class="info-card shadow-sm">
+                        <h5><i class="fas fa-university check-icon"></i> Servidores Federais (SIAPE)</h5>
+                        <p class="small mb-0 text-muted">Ativos, aposentados e pensionistas da administração direta com as melhores margens do mercado.</p>
+                    </div>
+
+                    <div class="info-card shadow-sm">
+                        <h5><i class="fas fa-medal check-icon"></i> Militares das Forças Armadas</h5>
+                        <p class="small mb-0 text-muted">Estratégias de crédito para Exército, Marinha e Aeronáutica (Ativos e Inativos) com liberação rápida.</p>
+                    </div>
+
+                    <div class="info-card shadow-sm">
+                        <h5><i class="fas fa-landmark check-icon"></i> Estaduais e Municipais</h5>
+                        <p class="small mb-0 text-muted">Consulte as condições específicas e convênios ativos para o seu órgão governamental.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 order-1 order-md-2 text-center">
+                    <img src="MILITARES_FORMACAO.png" alt="Militares das Forças Armadas em Formação" class="img-fluid img-militar-shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-5 bg-dark text-white text-center">
+        <div class="container">
+            <h4 class="fw-bold mb-4">CONSIG ONLINE</h4>
+            <p class="small opacity-50 mb-4">Consultoria Financeira Especializada em Crédito Consignado.<br>Respeito e transparência com quem serve ao Brasil.</p>
+            <div class="mb-4">
+                <a href="/" class="btn btn-outline-light btn-sm px-4">Voltar ao Início</a>
+            </div>
+            <hr class="opacity-25 my-4">
+            <p class="small mb-0">© 2024 Todos os direitos reservados. Anderson Silva Consultoria.</p>
+        </div>
+    </footer>
+
+    <section class="py-4 bg-light">
+        <div class="container">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <span style="font-size: 9px; color: #999; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Publicidade</span>
+                <div style="width: 100%; max-width: 728px;">
+                    <ins class="adsbygoogle"
+                         style="display:inline-block; width:100%; height:90px"
+                         data-ad-client="ca-pub-6941311170472131"
+                         data-ad-slot="1234567890"
+                         data-ad-format="horizontal"
+                         data-full-width-responsive="true"></ins>
+                    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
