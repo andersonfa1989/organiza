@@ -1,0 +1,84 @@
+:root {
+    --primary-color: #004a99; /* Azul Bancário */
+    --secondary-color: #25d366; /* Verde WhatsApp */
+    --accent-color: #ffc107; /* Amarelo Atenção */
+}
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    color: #333;
+}
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(rgba(0, 74, 153, 0.9), rgba(0, 74, 153, 0.9)), 
+                url('https://images.unsplash.com/photo-1573163281530-0bbe3b246a4d?auto=format&fit=crop&q=80&w=1470') no-repeat center center/cover;
+    min-height: 80vh;
+    padding: 100px 0;
+}
+
+/* Cards de Produtos */
+.product-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid #eee;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    border-color: var(--primary-color);
+}
+
+.icon-box {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.underline {
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin-top: 10px;
+}
+
+/* Botão WhatsApp Flutuante */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--secondary-color);
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover {
+    background-color: #128c7e;
+    color: #fff;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+        text-align: center;
+    }
+    .display-4 {
+        font-size: 2rem;
+    }
+}
